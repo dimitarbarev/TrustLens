@@ -35,19 +35,56 @@ trustlens/
 
 | Layer | Technology | Notes |
 |-------|------------|-------|
-| Extension | TypeScript, Manifest V3 | Chrome-first; content scripts and popup UI |
+| Extension | Plasmo, React, TypeScript, Tailwind CSS | Chrome Manifest V3 popup |
 | Backend | Python, FastAPI | REST API for verification requests |
 | Shared contracts | Markdown (+ future JSON Schema) | Stable request/response shapes |
 | Future AI | Google Gemini (multimodal) | Planned; not in MVP |
 | Future storage | TBD database | Analytics and history; not in MVP |
 
-## Getting Started
+## Quick Start (MVP)
 
-Detailed setup instructions will be added as implementation begins. For now:
+Run the backend and extension in **two terminals**.
 
-1. Read [docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md) for overall direction.
-2. Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for system design.
-3. See package READMEs in [extension/](extension/README.md) and [backend/](backend/README.md).
+### Terminal 1 — Backend
+
+```bash
+cd trustlens/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Health check: http://127.0.0.1:8000/api/health
+
+### Terminal 2 — Extension
+
+```bash
+cd trustlens/extension
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Load in Chrome:
+
+1. Open `chrome://extensions`
+2. Enable **Developer mode**
+3. Click **Load unpacked**
+4. Select `trustlens/extension/build/chrome-mv3-dev`
+
+### Test the MVP flow
+
+1. Click the TrustLens extension icon.
+2. Paste suspicious post text and/or upload an image (chart, map, screenshot, etc.).
+3. Optionally describe what the image shows.
+4. Click **Verify Post**.
+5. Review the mocked trust score, verdict, explanation, claims, image summary, and sources.
+
+**Privacy:** Text and images are sent to your local backend in memory only. Nothing is stored on disk or in a database.
+
+See [extension/README.md](extension/README.md) and [backend/README.md](backend/README.md) for more detail.
 
 ## Documentation
 
@@ -73,7 +110,7 @@ See [docs/ROADMAP.md](docs/ROADMAP.md) for details.
 
 ## Contributing
 
-Contributions are welcome. This repository is in early foundation stage — structure and documentation first, implementation to follow. Please open an issue before large changes so we can align on scope.
+Contributions are welcome. Please open an issue before large changes so we can align on scope.
 
 ## License
 

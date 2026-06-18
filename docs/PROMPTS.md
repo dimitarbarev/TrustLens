@@ -13,6 +13,24 @@ This approach keeps scope explicit, preserves architectural decisions in chat hi
 3. **Respect phase boundaries** — Do not prompt for Gemini, databases, or Facebook scanning until the relevant roadmap phase is active.
 4. **Update docs when behavior changes** — Code and documentation stay in sync.
 
+## Completed Prompts
+
+### Phase 1 — Monorepo foundation
+
+Created monorepo structure, documentation (`PROJECT_PLAN`, `ARCHITECTURE`, `MVP_SCOPE`, `ROADMAP`), shared API contract stub, MIT license, and package READMEs. No application logic.
+
+### Phase 1 — Backend MVP
+
+Implemented FastAPI backend with `GET /api/health`, `POST /api/verify` (multipart form), mocked verification service, in-memory-only processing, and CORS configuration.
+
+### Phase 1 — Extension MVP
+
+Implemented Plasmo + React + TypeScript + Tailwind popup UI with reusable components, verification service, configurable API URL, and background context-menu foundation.
+
+### Phase 1 — Connect extension to backend
+
+Wired the full MVP flow: extension sends `text`, optional `image`, and optional `imageContext` via multipart form to `POST /api/verify`; backend returns mocked results; extension renders trust score, verdict, risk level, explanation, detected claims, image analysis summary, and sources. Added frontend/backend empty-submission validation, offline error handling, loading state, CORS defaults for extension dev (`CORS_ORIGINS=*`), and updated root README with run/test instructions.
+
 ## Prompt Categories
 
 | Category | Examples |
@@ -20,6 +38,7 @@ This approach keeps scope explicit, preserves architectural decisions in chat hi
 | Foundation | Monorepo layout, README, architecture docs |
 | Extension | Popup UI, content scripts, messaging, API client |
 | Backend | Routes, Pydantic models, mock verification service |
+| Integration | Connect extension to backend, CORS, error handling |
 | Contracts | Extend `verification-result.md`, add JSON Schema |
 | Future phases | Gemini integration, OCR pipeline, evidence search |
 
@@ -39,6 +58,14 @@ Do not add Gemini or database code.
 Add [endpoint] to trustlens/backend using FastAPI.
 Validate requests with Pydantic models matching the shared contract.
 Use the mock verification service only.
+```
+
+### Integration task
+
+```
+Connect trustlens/extension to the FastAPI backend POST /api/verify.
+Ensure multipart form fields, CORS, loading/error states, and in-memory-only processing.
+Do not add Gemini, OCR, evidence search, database, or Facebook scanning.
 ```
 
 ### Documentation task

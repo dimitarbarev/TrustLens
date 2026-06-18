@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     host: str = "127.0.0.1"
     port: int = 8000
 
-    # Comma-separated list. Use "*" to allow any origin (extension dev).
-    cors_origins: str = "http://localhost:3000"
+    # Comma-separated list. Use "*" to allow any origin (recommended for extension dev).
+    cors_origins: str = "*"
 
     verification_mode: str = "mock"
 

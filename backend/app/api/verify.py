@@ -45,7 +45,7 @@ async def verify_content(
     if not has_text and not has_image:
         raise HTTPException(
             status_code=422,
-            detail="At least one of 'text' or 'image' must be provided.",
+            detail="Please provide some text from the post or upload an image before checking.",
         )
 
     service = get_verification_service()

@@ -63,7 +63,7 @@ Interactive docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `APP_NAME` | TrustLens | Shown in health response |
-| `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins; use `*` for extension dev |
+| `CORS_ORIGINS` | `*` | Comma-separated allowed origins; use `*` for Chrome extension dev |
 | `VERIFICATION_MODE` | `mock` | `mock` only in MVP |
 
 ## Future Integration Points
