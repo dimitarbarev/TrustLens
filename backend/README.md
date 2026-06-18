@@ -6,6 +6,8 @@ Python FastAPI service that accepts verification requests from the browser exten
 
 **MVP implemented** — health and verify endpoints with in-memory mock verification.
 
+**Demonstration mode:** All verification responses are simulated placeholders. Real AI analysis (Gemini) is planned for Phase 2. The extension popup displays an MVP Demonstration Mode banner to make this clear to users.
+
 ## Structure
 
 ```

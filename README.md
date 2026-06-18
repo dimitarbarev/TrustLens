@@ -17,7 +17,10 @@ The first release focuses on a **browser extension proof of concept** with:
 - Text and image input from the user (selected text or uploaded/captured image)
 - A lightweight backend API that returns structured verification results
 - A **mocked verification layer** (deterministic responses for development and demos)
+- A visible **MVP Demonstration Mode** banner in the extension popup
 - Clear API contracts shared between extension and backend
+
+**Important:** TrustLens is currently in **demonstration mode**. Verification scores, verdicts, and sources are simulated placeholders — not real AI fact-checking. Real multimodal verification (Google Gemini) is planned for Phase 2. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 Out of scope for the MVP: Gemini integration, databases, Facebook post scanning, OCR, evidence search, and mobile apps. See [docs/MVP_SCOPE.md](docs/MVP_SCOPE.md) for the full list.
 
@@ -77,12 +80,15 @@ Load in Chrome:
 ### Test the MVP flow
 
 1. Click the TrustLens extension icon.
-2. Paste suspicious post text and/or upload an image (chart, map, screenshot, etc.).
-3. Optionally describe what the image shows.
-4. Click **Verify Post**.
-5. Review the mocked trust score, verdict, explanation, claims, image summary, and sources.
+2. Read the **MVP Demonstration Mode** banner (scores are simulated, not real AI results).
+3. Paste suspicious post text and/or upload an image (chart, map, screenshot, etc.).
+4. Optionally describe what the image shows.
+5. Click **Verify Post**.
+6. Review the mocked trust score, verdict, explanation, claims, image summary, and sources.
 
 **Privacy:** Text and images are sent to your local backend in memory only. Nothing is stored on disk or in a database.
+
+**Demonstration mode:** Results are mocked for UI and workflow testing. Real AI verification arrives in a future phase.
 
 See [extension/README.md](extension/README.md) and [backend/README.md](backend/README.md) for more detail.
 
